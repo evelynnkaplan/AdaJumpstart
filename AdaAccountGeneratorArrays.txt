@@ -1,0 +1,20 @@
+#Define arrays.
+names = []
+ids = []
+emails = []
+names_split = [] #This array is for separated first and last names for the emails portion of the assignment.
+
+#Ask user for their first and last name and put the two names together in a string.
+5.times do |n|
+  puts "Please type your first name."
+  first = gets.chomp.upcase
+  puts "Please type your last name."
+  last = gets.chomp.upcase
+  names.push "#{first} "  + last
+#Generate random numbers from 111111 to 999999 for each student. These will be used for the student ID numbers. 
+ ids.push(rand(111111..999999))
+ ids[n] = ids[n].to_s #Converts the ID numbers from integers into strings, because integers cannot be split but strings can. Each id number will need to be split in order to use the last three digits for the email address.
+  emails << first.slice(0) + last + ids[n].slice(3..5) + "@adadevelopersacademy.org"
+end
+final = emails.join(" ")
+print final 
