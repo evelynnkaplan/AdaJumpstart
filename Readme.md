@@ -1,6 +1,41 @@
 # Welcome.
 This is where some highlights of coding assignments from [Ada Developers Academy's Jump Start](https://github.com/Ada-Developers-Academy/jump-start) lessons will live.
 
+## Account Generator (Hashes)
+This is my code for the [Account Generator Continued assignment](https://github.com/Ada-Developers-Academy/jump-start/blob/master/learning-to-code/hashes/assignments/account-generator-cont.md) from the Hashes lesson (includes commentary and explanations). The code is refactored from the first version of the assignment, [Account Generator](https://github.com/Ada-Developers-Academy/jump-start/blob/master/learning-to-code/arrays/assignments/account-generator.md). My code for that assignment is [below](https://github.com/evelynnkaplan/AdaJumpstart#account-generator-arrays).
+
+```#Define empty array. This array will store all of the hashes with student info.
+student_info = []
+#Utilize a single loop to drive the population of the array with the hashes containing info for 5 students. 
+5.times do
+  #Add an empty hash for each individual student's information.
+  student = {} 
+  #Start filling up the array. Accept user input for student name. I chose to keep first and last name input separate, because later I will need to use only a slice of the first name but the whole last name. Accepting separate user input for the last name means I can access the last name without having to know how many characters are in the last name. There are other ways to access only the last name, even if the last name is in the same string as the first name (such as using the split method), but I think that having the last name be a separate, defined variable is the simplest solution here.
+  puts "Please type your first name."
+  first = gets.chomp.upcase
+  puts "Please type your last name."
+  last = gets.chomp.upcase
+  #Add this input to the hash, assigning the input as the value to the key "name."
+  student["name"] = first + " " + last 
+  #Generate random numbers from 111111 to 999999 for each student. These will be used for the student ID numbers. Assign the random ID number as the value for the key "id." Later I will need to use the slice method on the ID number, so convert the random integer output to a string now. The slice method can only be used on a string.
+  student["id"] = rand(111111..999999).to_s
+  #Generate student email addresses. Email address will contain first letter of first name,full last name, and last 3 digits of student id number, plus "@adadevelopersacademy.org." The slice method is used to access the student's first initial as well as the last three digits of the student's ID number.
+  student["email"] = first.slice(0) + last +       student["id"].slice(3..5) + "@adadevelopersacademy.org"
+  #Add hash with all of the student's info to the array.
+  student_info << student 
+end
+#Add a line break for better visual readability.
+puts 
+#Print the student roster.
+5.times do |n|
+  puts "Name: " + student_info[n]["name"]
+  puts "ID number: " + student_info[n]["id"]
+  puts "Email address: " + student_info[n]["email"]
+  #Add a line break for better visual readability.
+  puts 
+end
+```
+
 ## Account Generator (Arrays)
 This is my code for the [Account Generator assignment](https://github.com/Ada-Developers-Academy/jump-start/blob/master/learning-to-code/arrays/assignments/account-generator.md) from the Arrays lesson (includes a bit of commentary). 
 
