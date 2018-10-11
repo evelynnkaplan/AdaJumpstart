@@ -8,7 +8,6 @@ This is my code for the [Account Generator assignment](https://github.com/Ada-De
 names = []
 ids = []
 emails = []
-names_split = [] #This array is for separated first and last names for the emails portion of the assignment.
 
 #Ask user for their first and last name and put the two names together in a string.
 5.times do |n|
