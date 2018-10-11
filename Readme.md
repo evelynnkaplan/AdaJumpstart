@@ -10,17 +10,25 @@ student_info = []
 5.times do
   #Add an empty hash for each individual student's information.
   student = {} 
-  #Start filling up the array. Accept user input for student name. I chose to keep first and last name input separate, because later I will need to use only a slice of the first name but the whole last name. Accepting separate user input for the last name means I can access the last name without having to know how many characters are in the last name. There are other ways to access only the last name, even if the last name is in the same string as the first name (such as using the split method), but I think that having the last name be a separate, defined variable is the simplest solution here.
+  #Start filling up the array. Accept user input for student name. I chose to keep first and last name input separate, 
+  #because later I will need to use only a slice of the first name but the whole last name. Accepting separate user input 
+  #for the last name means I can access the last name without having to know how many characters are in the last name. 
+  #There are other ways to access only the last name, even if the last name is in the same string as the first name 
+  #(such as using the split method), but I think that having the last name be a separate, defined variable is the simplest solution here.
   puts "Please type your first name."
   first = gets.chomp.upcase
   puts "Please type your last name."
   last = gets.chomp.upcase
   #Add this input to the hash, assigning the input as the value to the key "name."
   student["name"] = first + " " + last 
-  #Generate random numbers from 111111 to 999999 for each student. These will be used for the student ID numbers. Assign the random ID number as the value for the key "id." Later I will need to use the slice method on the ID number, so convert the random integer output to a string now. The slice method can only be used on a string.
+  #Generate random numbers from 111111 to 999999 for each student. These will be used for the student ID numbers. 
+  #Assign the random ID number as the value for the key "id." Later I will need to use the slice method on the ID number, 
+  #so convert the random integer output to a string now. The slice method can only be used on a string.
   student["id"] = rand(111111..999999).to_s
-  #Generate student email addresses. Email address will contain first letter of first name,full last name, and last 3 digits of student id number, plus "@adadevelopersacademy.org." The slice method is used to access the student's first initial as well as the last three digits of the student's ID number.
-  student["email"] = first.slice(0) + last +       student["id"].slice(3..5) + "@adadevelopersacademy.org"
+  #Generate student email addresses. Email address will contain first letter of first name,full last name, 
+  #and last 3 digits of student id number, plus "@adadevelopersacademy.org." The slice method is used to access 
+  #the student's first initial as well as the last three digits of the student's ID number.
+  student["email"] = first.slice(0) + last + student["id"].slice(3..5) + "@adadevelopersacademy.org"
   #Add hash with all of the student's info to the array.
   student_info << student 
 end
@@ -51,9 +59,13 @@ emails = []
   puts "Please type your last name."
   last = gets.chomp.upcase
   names.push "#{first} "  + last
-#Generate random numbers from 111111 to 999999 for each student. These will be used for the student ID numbers. 
+#Generate random numbers from 111111 to 999999 for each student. 
+#These will be used for the student ID numbers. 
  ids.push(rand(111111..999999))
- ids[n] = ids[n].to_s #Converts the ID numbers from integers into strings, because integers cannot be split but strings can. Each id number will need to be split in order to use the last three digits for the email address.
+#Convert the ID numbers from integers into strings, 
+#because integers cannot be split but strings can. Each id number will need 
+#to be split in order to use the last three digits for the email address.
+ ids[n] = ids[n].to_s 
   emails << first.slice(0) + last + ids[n].slice(3..5) + "@adadevelopersacademy.org"
 end
 final = emails.join(" ")
